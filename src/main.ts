@@ -6,26 +6,38 @@ export default function withModel(model: Model) {
         const { its, as } = nlp;
         const document = nlp.readDoc(text);
 
-        // Get counts of words
-        const counts = document.tokens().filter(
+        // Get lemmatized counts of words
+        const counts: Record<string, number> = {};
+        document.tokens().filter(
             (t) => t.out(its.type) === 'word' && !t.out(its.stopWordFlag)
-        ).out(its.normal, as.bow) as Bow;
+        ).each(token => {
+            const lemma = token.out(its.lemma);
+            if (!counts[lemma]) {
+                counts[lemma] = 1;
+            } else {
+                counts[lemma]++;
+            }
+        });
 
-        // Rank sentences by occurrence of words
+        // Get and score sentences
         const sentences = document.sentences();
         const scores: [string, number][] = [];
+
         sentences.each(sentence => {
-            const tokens = sentence.tokens().out();
             let score = 0;
-            for (const token of tokens) {
-                score += counts?.[token] ?? 0;
-            };
+            sentence.tokens().each(token => { 
+                const lemma = token.out(its.lemma);
+
+                if (counts[lemma]) {
+                    score += counts[lemma];
+                };
+
+            });
 
             scores.push([sentence.out(), score]);
         });
-
-        // Return the top sentences
+        
         const sorted = scores.sort((a, b) => b[1] - a[1]);
-        return sorted.map(([sentence, score]) => sentence);
+        return sorted.map(s => s[0]);
     };
 };
