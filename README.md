@@ -11,7 +11,7 @@ more information.
 
 ```TypeScript
 const model = require("wink-eng-lite-model");
-import withModel from "smmry";
+import withModel from "sumerian";
 const summarize = withModel(model);
 
 const document = "This is a test document.";
