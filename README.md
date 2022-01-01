@@ -1,4 +1,4 @@
-# SMMRY
+# Sumerian
 
 An implementation of the [SMMRY algorithm](https://smmry.com/about), using
 [winkNLP](https://winkjs.org).

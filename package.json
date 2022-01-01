@@ -1,5 +1,5 @@
 {
-  "name": "smmry",
+  "name": "sumerian",
   "version": "0.0.0",
   "description": "An implementation of the SMMRY algorithm, to summarize english text",
   "main": "out/main.js",
