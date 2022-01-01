@@ -1,0 +1,23 @@
+{
+  "name": "smmry",
+  "version": "0.0.0",
+  "description": "An implementation of the SMMRY algorithm, to summarize english text",
+  "main": "out/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MayorMonty/smmry.git"
+  },
+  "keywords": [
+    "nlp",
+    "smmry"
+  ],
+  "author": "Brendan McGuire <brendan@bren.app>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MayorMonty/smmry/issues"
+  },
+  "homepage": "https://github.com/MayorMonty/smmry#readme"
+}
